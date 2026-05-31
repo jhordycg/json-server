@@ -3,9 +3,9 @@ import test from 'node:test'
 
 import type { Adapter } from 'lowdb'
 
-import { DEFAULT_SCHEMA_PATH, NormalizedAdapter } from './adapters/normalized-adapter.ts'
-import type { RawData } from './adapters/normalized-adapter.ts'
-import type { Data } from './service.ts'
+import type { Data } from '../service.ts'
+import type { RawData } from './normalized-adapter.ts'
+import { DEFAULT_SCHEMA_PATH, NormalizedAdapter } from './normalized-adapter.ts'
 
 class StubAdapter implements Adapter<RawData> {
   #data: RawData | null
