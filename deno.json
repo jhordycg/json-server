@@ -1,0 +1,27 @@
+{
+    "exports": "./src/hono/main.ts",
+    "imports": {
+        "@hono/hono": "jsr:@hono/hono@4.12.23",
+        "@std/fs": "jsr:@std/fs@^1.0.24",
+        "@std/io": "jsr:@std/io@^0.225.3",
+        "@std/path": "jsr:@std/path@^1.1.5",
+        "@std/url": "jsr:@std/url@^0.225.1"
+    },
+    "name": "@jhordycg/json-server",
+    "permissions": {
+        "default": {
+            "env": [
+                "NODE_ENV",
+                "TF_BUILD",
+                "TERM",
+                "CI",
+                "TEAMCITY_VERSION",
+                "COLORTERM"
+            ],
+            "read": [
+                "./db.json"
+            ]
+        }
+    },
+    "version": "0.0.1"
+}
