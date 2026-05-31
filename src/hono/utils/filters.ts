@@ -1,6 +1,6 @@
 import { dirname } from "@std/path/dirname";
-import { fromFileUrl as fileURLToPath } from "@std/path/from-file-url";
 import { join } from "@std/path/join";
+import { fileURLToPath } from "node:url";
 
 import { Eta } from "eta";
 
