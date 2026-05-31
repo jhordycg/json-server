@@ -43,7 +43,9 @@ export function createApp(db: Low<Data>, options: AppOptions = {}): Hono {
 
   app.get("/:name", (ctx) => {
     const name = ctx.req.param("name") ?? "";
-    const { where, sort, page, perPage, embed } = parseListParams(ctx.req.queries());
+    const { where, sort, page, perPage, embed } = parseListParams(
+      ctx.req.queries(),
+    );
 
     const data = service.find(name, {
       where,
@@ -87,13 +89,10 @@ export function createApp(db: Low<Data>, options: AppOptions = {}): Hono {
   return app;
 }
 
-const file = Deno.env.get("DB_FILE") ?? "fixtures/db.json";
-const staticFiles = Deno.env.get("STATIC_FILES")?.split(",").map((path) => path.trim()) ?? ["public"];
-
-const db = await setupDb(file);
-
-const apiServer: Hono = new Hono();
-
-apiServer.route("/api", createApp(db, { static: staticFiles }));
-
-export default { fetch: apiServer.fetch };
+export async function createServer(
+  dbFile: string,
+  options: AppOptions = {},
+): Promise<Hono> {
+  const db = await setupDb(dbFile);
+  return createApp(db, options);
+}
