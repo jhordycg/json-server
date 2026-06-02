@@ -1,14 +1,8 @@
-import { dirname } from "@std/path/dirname";
-import { join } from "@std/path/join";
-import { fileURLToPath } from "node:url";
-
-import { Eta } from "eta";
-
 import type { Handler } from "@hono/hono/types";
+import { resolve } from "@std/path/resolve";
+import { Eta } from "eta";
 import { parseWhere } from "../../parse-where.ts";
 import { isItem } from "../../service.ts";
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const isProduction = process.env["NODE_ENV"] === "production";
 
@@ -18,7 +12,7 @@ export type AppOptions = {
 };
 
 export const eta = new Eta({
-  views: join(__dirname, "../views"),
+  views: resolve("../views"),
   cache: isProduction,
 });
 
