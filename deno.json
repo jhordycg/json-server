@@ -1,76 +1,75 @@
 {
-    "exports": "./src/hono/main.ts",
-    "imports": {
-        "@hono/hono": "jsr:@hono/hono@4.12.23",
-        "@std/assert": "jsr:@std/assert@1.0.19",
-        "@std/fs": "jsr:@std/fs@1.0.24",
-        "@std/io": "jsr:@std/io@0.225.3",
-        "@std/path": "jsr:@std/path@1.1.5",
-        "@std/url": "jsr:@std/url@0.225.1",
-        "@tinyhttp/app": "npm:@tinyhttp/app@3.0.1",
-        "@tinyhttp/cors": "npm:@tinyhttp/cors@2.0.1",
-        "@tinyhttp/logger": "npm:@tinyhttp/logger@2.1.0",
-        "@types/node": "npm:@types/node@25.0.8",
-        "chalk": "npm:chalk@5.6.2",
-        "chokidar": "npm:chokidar@5.0.0",
-        "concurrently": "npm:concurrently@9.2.1",
-        "dot-prop": "npm:dot-prop@10.1.0",
-        "eta": "npm:eta@4.5.0",
-        "get-port": "npm:get-port@7.1.0",
-        "husky": "npm:husky@9.1.7",
-        "inflection": "npm:inflection@3.0.2",
-        "json5": "npm:json5@2.2.3",
-        "lowdb": "npm:lowdb@7.0.1",
-        "milliparsec": "npm:milliparsec@5.1.0",
-        "oxfmt": "npm:oxfmt@0.24.0",
-        "oxlint": "npm:oxlint@1.39.0",
-        "sirv": "npm:sirv@3.0.2",
-        "sort-on": "npm:sort-on@7.0.0",
-        "tempy": "npm:tempy@3.1.0",
-        "type-fest": "npm:type-fest@5.4.0",
-        "typescript": "npm:typescript@5.9.3"
-    },
-    "license": "MIT",
-    "lint": {
-        "rules": {
-            "exclude": [
-                "no-explicit-any",
-                "ban-types"
-            ]
-        }
-    },
-    "name": "@jhordycg/json-server",
+  "name": "@jhordycg/json-server",
+  "version": "0.1.1",
+  "license": "MIT",
+  "exports": "./src/hono/main.ts",
+  "imports": {
+    "@hono/hono": "jsr:@hono/hono@4.12.23",
+    "@std/assert": "jsr:@std/assert@1.0.19",
+    "@std/expect": "jsr:@std/expect@^1.0.19",
+    "@std/fs": "jsr:@std/fs@1.0.24",
+    "@std/io": "jsr:@std/io@0.225.3",
+    "@std/path": "jsr:@std/path@1.1.5",
+    "@std/testing": "jsr:@std/testing@^1.0.19",
+    "@std/url": "jsr:@std/url@0.225.1",
+    "@tinyhttp/app": "npm:@tinyhttp/app@3.0.1",
+    "@tinyhttp/cors": "npm:@tinyhttp/cors@2.0.1",
+    "@tinyhttp/logger": "npm:@tinyhttp/logger@2.1.0",
+    "@types/node": "npm:@types/node@25.0.8",
+    "chalk": "npm:chalk@5.6.2",
+    "chokidar": "npm:chokidar@5.0.0",
+    "concurrently": "npm:concurrently@9.2.1",
+    "dot-prop": "npm:dot-prop@10.1.0",
+    "eta": "npm:eta@4.5.0",
+    "get-port": "npm:get-port@7.1.0",
+    "husky": "npm:husky@9.1.7",
+    "inflection": "npm:inflection@3.0.2",
+    "json5": "npm:json5@2.2.3",
+    "lowdb": "npm:lowdb@7.0.1",
+    "milliparsec": "npm:milliparsec@5.1.0",
+    "oxfmt": "npm:oxfmt@0.24.0",
+    "oxlint": "npm:oxlint@1.39.0",
+    "sirv": "npm:sirv@3.0.2",
+    "sort-on": "npm:sort-on@7.0.0",
+    "tempy": "npm:tempy@3.1.0",
+    "type-fest": "npm:type-fest@5.4.0",
+    "typescript": "npm:typescript@5.9.3"
+  },
+  "permissions": {
+    "default": {
+      "env": [
+        "NODE_ENV",
+        "TF_BUILD",
+        "TERM",
+        "CI",
+        "TEAMCITY_VERSION",
+        "COLORTERM",
+        "PORT",
+        "HOST",
+        "CHOKIDAR_USEPOLLING",
+        "CHOKIDAR_INTERVAL"
+      ],
+      "net": [
+        "[::]:3000"
+      ],
+      "read": [
+        "fixtures"
+      ]
+    }
+  },
+  "tasks": {
+    "build": "rm -rf lib && tsc",
+    "dev": "deno run -P src/bin.ts fixtures/db.json",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check",
+    "lint": "oxlint src",
+    "prepare": "husky",
+    "prepublishOnly": "rm -rf lib && tsc",
+    "test": "deno test"
+  },
+  "test": {
     "permissions": {
-        "default": {
-            "env": [
-                "NODE_ENV",
-                "TF_BUILD",
-                "TERM",
-                "CI",
-                "TEAMCITY_VERSION",
-                "COLORTERM",
-                "PORT",
-                "HOST",
-                "CHOKIDAR_USEPOLLING",
-                "CHOKIDAR_INTERVAL"
-            ],
-            "net": [
-                "[::]:3000"
-            ],
-            "read": [
-                "fixtures"
-            ]
-        }
-    },
-    "tasks": {
-        "build": "rm -rf lib && tsc",
-        "dev": "deno run -P src/bin.ts fixtures/db.json",
-        "fmt": "oxfmt",
-        "fmt:check": "oxfmt --check",
-        "lint": "oxlint src",
-        "prepare": "husky",
-        "prepublishOnly": "rm -rf lib && tsc",
-        "test": "deno test"
-    },
-    "version": "0.1.1"
+      "all": true
+    }
+  }
 }
