@@ -61,8 +61,10 @@ beforeEach(() => {
 });
 
 test("findById", () => {
+  const posts = db.data?.[POSTS] ?? [];
+  const firstPost = Array.isArray(posts) ? posts[0] : posts;
   const cases: [[string, string, { _embed?: string[] | string }], unknown][] = [
-    [[POSTS, "1", {}], db.data?.[POSTS]?.[0]],
+    [[POSTS, "1", {}], firstPost],
     [[POSTS, UNKNOWN_ID, {}], undefined],
     [[POSTS, "1", { _embed: ["comments"] }], {
       ...post1,
