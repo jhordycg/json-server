@@ -65,7 +65,7 @@
     "lint": "oxlint src",
     "prepare": "husky",
     "prepublishOnly": "rm -rf lib && tsc",
-    "test": "deno test"
+    "test": "deno test -P"
   },
   "test": {
     "permissions": {
