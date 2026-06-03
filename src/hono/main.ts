@@ -2,10 +2,11 @@ import { Hono } from "@hono/hono";
 import { cors } from "@hono/hono/cors";
 import { serveStatic } from "@hono/hono/deno";
 import type { Low } from "lowdb";
+import rawTemplate from "../../views/index.html" with { type: "text" };
 import { type Data, Service } from "../service.ts";
+import { eta } from "./utils/eta.ts";
 import {
   type AppOptions,
-  eta,
   parseListParams,
   withBodyHandler,
   withIdAndBodyHandler,
@@ -37,7 +38,8 @@ export function createApp(db: Low<Data>, options: AppOptions = {}): Hono {
   // Body parser
   app.get("/", (ctx) => {
     return ctx.html(
-      eta.render("index.html", { data: db.data }) ?? "Error rendering template",
+      eta.renderString(rawTemplate, { data: db.data }) ??
+        "Error rendering template",
     );
   });
 
