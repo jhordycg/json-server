@@ -1,6 +1,7 @@
 {
   "version": "5",
   "specifiers": {
+    "jsr:@bgub/eta@4.6.0": "4.6.0",
     "jsr:@hono/hono@4.12.23": "4.12.23",
     "jsr:@std/assert@1.0.19": "1.0.19",
     "jsr:@std/assert@^1.0.19": "1.0.19",
@@ -28,7 +29,6 @@
     "npm:chokidar@5.0.0": "5.0.0",
     "npm:concurrently@9.2.1": "9.2.1",
     "npm:dot-prop@10.1.0": "10.1.0",
-    "npm:eta@4.5.0": "4.5.0",
     "npm:get-port@7.1.0": "7.1.0",
     "npm:husky@9.1.7": "9.1.7",
     "npm:inflection@3.0.2": "3.0.2",
@@ -44,6 +44,9 @@
     "npm:typescript@5.9.3": "5.9.3"
   },
   "jsr": {
+    "@bgub/eta@4.6.0": {
+      "integrity": "fe872004cd6c64ca25c7e71fd80bbbad7d8d552cefd31828bddddb7db0f79eb1"
+    },
     "@hono/hono@4.12.23": {
       "integrity": "9d9f3da498f69c311b5f92d973eb3b8ebc973b5fd2b4972781b556e07818a745"
     },
@@ -389,9 +392,6 @@
     "escalade@3.2.0": {
       "integrity": "sha512-WUj2qlxaQtO4g6Pq5c29GTcWGDyd8itL8zTlipgECz3JesAiiOKotd8JU6otB3PACgG6xkJUyVhboMS+bje/jA=="
     },
-    "eta@4.5.0": {
-      "integrity": "sha512-qifAYjuW5AM1eEEIsFnOwB+TGqu6ynU3OKj9WbUTOtUBHFPZqL03XUW34kbp3zm19Ald+U8dEyRXaVsUck+Y1g=="
-    },
     "get-caller-file@2.0.5": {
       "integrity": "sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg=="
     },
@@ -620,6 +620,7 @@
   },
   "workspace": {
     "dependencies": [
+      "jsr:@bgub/eta@4.6.0",
       "jsr:@hono/hono@4.12.23",
       "jsr:@std/assert@1.0.19",
       "jsr:@std/expect@^1.0.19",
@@ -636,7 +637,6 @@
       "npm:chokidar@5.0.0",
       "npm:concurrently@9.2.1",
       "npm:dot-prop@10.1.0",
-      "npm:eta@4.5.0",
       "npm:get-port@7.1.0",
       "npm:husky@9.1.7",
       "npm:inflection@3.0.2",

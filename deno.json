@@ -20,7 +20,7 @@
     "chokidar": "npm:chokidar@5.0.0",
     "concurrently": "npm:concurrently@9.2.1",
     "dot-prop": "npm:dot-prop@10.1.0",
-    "eta": "npm:eta@4.5.0",
+    "eta": "jsr:@bgub/eta@4.6.0",
     "get-port": "npm:get-port@7.1.0",
     "husky": "npm:husky@9.1.7",
     "inflection": "npm:inflection@3.0.2",
