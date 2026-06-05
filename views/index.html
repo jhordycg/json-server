@@ -128,7 +128,7 @@
       <span class="empty">No resources in db.json.</span>
       <% } else { %> <% resources.forEach(function([name, value]) { const isCollection =
       Array.isArray(value); %>
-      <a href="/<%= name %>">
+      <a href="api/<%= name %>">
         <span>/<%= name %></span>
         <span class="meta">
           <% if (isCollection) { %> <%= value.length %> items <% } else { %> object <% } %>
