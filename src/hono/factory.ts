@@ -1,7 +1,7 @@
 import { Hono } from '@hono/hono'
 import { createFactory, createMiddleware } from '@hono/hono/factory'
 import type { HonoOptions } from '@hono/hono/hono-base'
-import type { Handler } from '@hono/hono/types'
+import type { Handler, MiddlewareHandler } from '@hono/hono/types'
 import { parse } from '@std/path/parse'
 import type { Low } from 'lowdb'
 import { type Data, isItem, Service } from '../service.ts'
@@ -152,18 +152,18 @@ const crudFactory = createFactory<Env>({
   },
 })
 
-export function crudLowDB(db: Low<Data>) {
+export function crudLowDB(db: Low<Data>): MiddlewareHandler<Env> {
   return createMiddleware<Env>((ctx, next) => {
     ctx.set('service', new Service(db))
     return next()
   })
 }
 
-export function loadHomePage(db: Low<Data>) {
+export function loadHomePage(db: Low<Data>): string {
   return eta.renderString(template, db)
 }
 
-export async function createApp(dbFile: string, options?: HonoOptions<Env>) {
+export async function createApp(dbFile: string, options?: HonoOptions<Env>): Promise<Hono<Env>> {
   const db = await setupDb(dbFile)
   const app = new Hono(options)
 

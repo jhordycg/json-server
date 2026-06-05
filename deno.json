@@ -3,9 +3,8 @@
   "version": "0.2.0",
   "license": "MIT",
   "exports": {
-    ".": "./src/hono/main.ts",
-    "./factory": "./src/hono/factory.ts",
-    "./jserver": "./src/hono/start-server.ts"
+    ".": "./src/hono/factory.ts",
+    "./jserver": "./src/start-server.ts"
   },
   "imports": {
     "@hono/hono": "jsr:@hono/hono@4.12.23",
