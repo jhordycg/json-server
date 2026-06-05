@@ -28,7 +28,12 @@ function splitKey(key: string): { path: string; op: WhereOperator | null } {
   return { path: key, op: 'eq' }
 }
 
-function setPathOp(root: JsonObject, path: string, op: WhereOperator, value: string): void {
+function setPathOp(
+  root: JsonObject,
+  path: string,
+  op: WhereOperator,
+  value: string,
+): void {
   const fullPath = `${path}.${op}`
   if (op === 'in') {
     setProperty(

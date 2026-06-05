@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -20,7 +20,8 @@
         max-width: 400px;
         padding: 0 24px;
         font-family:
-          ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+          ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+          system-ui, sans-serif;
         background-color: var(--bg);
         color: var(--fg);
         line-height: 1.5;
@@ -115,8 +116,10 @@
 
     <header>
       <div class="topbar">
-        <a href="https://github.com/typicode/json-server" target="_blank">json-server</a>
-        <a href="https://github.com/typicode/json-server" target="_blank">README</a>
+        <a href="https://github.com/typicode/json-server" target="_blank"
+        >json-server</a>
+        <a href="https://github.com/typicode/json-server" target="_blank"
+        >README</a>
       </div>
       <div class="intro">Available REST resources from db.json.</div>
     </header>
@@ -126,12 +129,13 @@
     <div class="list">
       <% if (resources.length === 0) { %>
       <span class="empty">No resources in db.json.</span>
-      <% } else { %> <% resources.forEach(function([name, value]) { const isCollection =
-      Array.isArray(value); %>
+      <% } else { %> <% resources.forEach(function([name, value]) { const
+      isCollection = Array.isArray(value); %>
       <a href="api/<%= name %>">
         <span>/<%= name %></span>
         <span class="meta">
-          <% if (isCollection) { %> <%= value.length %> items <% } else { %> object <% } %>
+          <% if (isCollection) { %> <%= value.length %> items <% } else { %>
+          object <% } %>
         </span>
       </a>
       <% }) %> <% } %>
@@ -141,7 +145,7 @@
       <span>To replace this page, create public/index.html.</span>
     </footer>
 
-    <a href="https://github.com/sponsors/typicode" target="_blank" class="heart">❤</a>
-
+    <a href="https://github.com/sponsors/typicode" target="_blank" class="heart"
+    >❤</a>
   </body>
 </html>

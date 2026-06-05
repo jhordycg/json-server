@@ -1,4 +1,4 @@
-   import assert from 'node:assert/strict'
+import assert from 'node:assert/strict'
 import { writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import test from 'node:test'
@@ -16,7 +16,14 @@ type Test = {
   statusCode: number
 }
 
-type HTTPMethods = 'DELETE' | 'GET' | 'HEAD' | 'PATCH' | 'POST' | 'PUT' | 'OPTIONS'
+type HTTPMethods =
+  | 'DELETE'
+  | 'GET'
+  | 'HEAD'
+  | 'PATCH'
+  | 'POST'
+  | 'PUT'
+  | 'OPTIONS'
 
 const port = await getPort()
 
@@ -131,7 +138,9 @@ await test('createApp', async (t) => {
       object: { f1: 'foo' },
     }
     const where = encodeURIComponent(JSON.stringify({ title: { eq: 'foo' } }))
-    const response = await fetch(`http://localhost:${port}/posts?_where=${where}`)
+    const response = await fetch(
+      `http://localhost:${port}/posts?_where=${where}`,
+    )
     assert.equal(response.status, 200)
     const data = await response.json()
     assert.deepEqual(data, [{ id: '1', title: 'foo' }])

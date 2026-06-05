@@ -3,10 +3,12 @@
 [![Node.js CI](https://github.com/typicode/json-server/actions/workflows/node.js.yml/badge.svg)](https://github.com/typicode/json-server/actions/workflows/node.js.yml)
 
 > [!IMPORTANT]
-> Viewing beta v1 documentation – usable but expect breaking changes. For stable version, see [here](https://github.com/typicode/json-server/tree/v0.17.4)
+> Viewing beta v1 documentation – usable but expect breaking changes. For stable
+> version, see [here](https://github.com/typicode/json-server/tree/v0.17.4)
 
 > [!NOTE]
-> Using React ⚛️ and tired of CSS-in-JS? See [MistCSS](https://github.com/typicode/mistcss) 👀
+> Using React ⚛️ and tired of CSS-in-JS? See
+> [MistCSS](https://github.com/typicode/mistcss) 👀
 
 ## Install
 
@@ -66,6 +68,7 @@ npx json-server db.json
 ```
 
 This starts the server at `http://localhost:3000`. You should see:
+
 ```
 JSON Server started on PORT :3000
 http://localhost:3000
@@ -78,6 +81,7 @@ curl http://localhost:3000/posts/1
 ```
 
 **Response:**
+
 ```json
 {
   "id": "1",
@@ -92,14 +96,13 @@ Run `json-server --help` for a list of options
 
 ### Gold
 
-|                                                                                                                                                            |
-| :--------------------------------------------------------------------------------------------------------------------------------------------------------: |
-|               <a href="https://mockend.com/" target="_blank"><img src="https://jsonplaceholder.typicode.com/mockend.svg" height="100px"></a>               |
-| <a href="https://zuplo.link/json-server-gh"><img src="https://github.com/user-attachments/assets/adfee31f-a8b6-4684-9a9b-af4f03ac5b75" height="100px"></a> |
-|     <a href="https://www.mintlify.com/"><img src="https://github.com/user-attachments/assets/bcc8cc48-b2d9-4577-8939-1eb4196b7cc5" height="100px"></a>     |
+|                                                                                                                                                                                                         |
+| :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+|                                     <a href="https://mockend.com/" target="_blank"><img src="https://jsonplaceholder.typicode.com/mockend.svg" height="100px"></a>                                      |
+|                       <a href="https://zuplo.link/json-server-gh"><img src="https://github.com/user-attachments/assets/adfee31f-a8b6-4684-9a9b-af4f03ac5b75" height="100px"></a>                        |
+|                           <a href="https://www.mintlify.com/"><img src="https://github.com/user-attachments/assets/bcc8cc48-b2d9-4577-8939-1eb4196b7cc5" height="100px"></a>                            |
 | <a href="http://git-tower.com/?utm_source=husky&utm_medium=referral"><img height="100px" alt="tower-dock-icon-light" src="https://jsonplaceholder.typicode.com/tower-icon-and-logo-1400x260.png" /></a> |
-| <a href="https://serpapi.com/?utm_source=typicode"><img height="100px" src="https://github.com/user-attachments/assets/52b3039d-1e4c-4c68-951c-93f0f1e73611" /></a>
-
+|                   <a href="https://serpapi.com/?utm_source=typicode"><img height="100px" src="https://github.com/user-attachments/assets/52b3039d-1e4c-4c68-951c-93f0f1e73611" /></a>                   |
 
 ### Silver
 
@@ -198,6 +201,7 @@ GET /posts?_page=1&_per_page=25
 ```
 
 **Response:**
+
 ```json
 {
   "first": 1,
@@ -214,8 +218,10 @@ GET /posts?_page=1&_per_page=25
 ```
 
 **Notes:**
+
 - `_per_page` defaults to `10` if not specified
-- Invalid `_page` or `_per_page` values are automatically normalized to valid ranges
+- Invalid `_page` or `_per_page` values are automatically normalized to valid
+  ranges
 
 ### Embed
 
@@ -249,15 +255,21 @@ json-server db.json -s ./static
 json-server db.json -s ./static -s ./node_modules
 ```
 
-Static files are served with standard MIME types and can include HTML, CSS, JavaScript, images, and other assets.
+Static files are served with standard MIME types and can include HTML, CSS,
+JavaScript, images, and other assets.
 
 ## Migration Notes (v0 → v1)
 
 If you are upgrading from json-server v0.x, note these behavioral changes:
 
-- **ID handling:** `id` is always a string and will be auto-generated if not provided
-- **Pagination:** Use `_per_page` with `_page` instead of the deprecated `_limit` parameter
-- **Relationships:** Use `_embed` instead of `_expand` for including related resources
-- **Request delays:** Use browser DevTools (Network tab > throttling) instead of the removed `--delay` CLI option
+- **ID handling:** `id` is always a string and will be auto-generated if not
+  provided
+- **Pagination:** Use `_per_page` with `_page` instead of the deprecated
+  `_limit` parameter
+- **Relationships:** Use `_embed` instead of `_expand` for including related
+  resources
+- **Request delays:** Use browser DevTools (Network tab > throttling) instead of
+  the removed `--delay` CLI option
 
-> **New to json-server?** These notes are for users migrating from v0. If this is your first time using json-server, you can ignore this section.
+> **New to json-server?** These notes are for users migrating from v0. If this
+> is your first time using json-server, you can ignore this section.

@@ -47,27 +47,45 @@ export function matchesWhere(obj: JsonObject, where: JsonObject): boolean {
         if (field === undefined) return false
 
         const op = value as OperatorObject
-        if (knownOps.includes('lt') && !((field as any) < (op.lt as any))) return false
-        if (knownOps.includes('lte') && !((field as any) <= (op.lte as any))) return false
-        if (knownOps.includes('gt') && !((field as any) > (op.gt as any))) return false
-        if (knownOps.includes('gte') && !((field as any) >= (op.gte as any))) return false
-        if (knownOps.includes('eq') && !((field as any) === (op.eq as any))) return false
-        if (knownOps.includes('ne') && !((field as any) !== (op.ne as any))) return false
+        if (knownOps.includes('lt') && !((field as any) < (op.lt as any))) {
+          return false
+        }
+        if (knownOps.includes('lte') && !((field as any) <= (op.lte as any))) {
+          return false
+        }
+        if (knownOps.includes('gt') && !((field as any) > (op.gt as any))) {
+          return false
+        }
+        if (knownOps.includes('gte') && !((field as any) >= (op.gte as any))) {
+          return false
+        }
+        if (knownOps.includes('eq') && !((field as any) === (op.eq as any))) {
+          return false
+        }
+        if (knownOps.includes('ne') && !((field as any) !== (op.ne as any))) {
+          return false
+        }
         if (knownOps.includes('in')) {
           const inValues = Array.isArray(op.in) ? op.in : [op.in]
           if (!inValues.some((v) => (field as any) === (v as any))) return false
         }
         if (knownOps.includes('contains')) {
           if (typeof field !== 'string') return false
-          if (!field.toLowerCase().includes(String(op.contains).toLowerCase())) return false
+          if (
+            !field.toLowerCase().includes(String(op.contains).toLowerCase())
+          ) return false
         }
         if (knownOps.includes('startsWith')) {
           if (typeof field !== 'string') return false
-          if (!field.toLowerCase().startsWith(String(op.startsWith).toLowerCase())) return false
+          if (
+            !field.toLowerCase().startsWith(String(op.startsWith).toLowerCase())
+          ) return false
         }
         if (knownOps.includes('endsWith')) {
           if (typeof field !== 'string') return false
-          if (!field.toLowerCase().endsWith(String(op.endsWith).toLowerCase())) return false
+          if (
+            !field.toLowerCase().endsWith(String(op.endsWith).toLowerCase())
+          ) return false
         }
         continue
       }

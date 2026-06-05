@@ -25,7 +25,13 @@ const eta = new Eta({
   cache: isProduction,
 })
 
-const RESERVED_QUERY_KEYS = new Set(['_sort', '_page', '_per_page', '_embed', '_where'])
+const RESERVED_QUERY_KEYS = new Set([
+  '_sort',
+  '_page',
+  '_per_page',
+  '_embed',
+  '_where',
+])
 
 function parseListParams(req: any) {
   const queryString = req.url.split('?')[1] ?? ''
@@ -54,7 +60,9 @@ function parseListParams(req: any) {
   const pageRaw = params.get('_page')
   const perPageRaw = params.get('_per_page')
   const page = pageRaw === null ? undefined : Number.parseInt(pageRaw, 10)
-  const perPage = perPageRaw === null ? undefined : Number.parseInt(perPageRaw, 10)
+  const perPage = perPageRaw === null
+    ? undefined
+    : Number.parseInt(perPageRaw, 10)
 
   return {
     where,
@@ -65,7 +73,9 @@ function parseListParams(req: any) {
   }
 }
 
-function withBody(action: (name: string, body: Record<string, unknown>) => Promise<unknown>) {
+function withBody(
+  action: (name: string, body: Record<string, unknown>) => Promise<unknown>,
+) {
   return async (req: any, res: any, next: any) => {
     const { name = '' } = req.params
     if (!isItem(req.body)) {
@@ -78,7 +88,11 @@ function withBody(action: (name: string, body: Record<string, unknown>) => Promi
 }
 
 function withIdAndBody(
-  action: (name: string, id: string, body: Record<string, unknown>) => Promise<unknown>,
+  action: (
+    name: string,
+    id: string,
+    body: Record<string, unknown>,
+  ) => Promise<unknown>,
 ) {
   return async (req: any, res: any, next: any) => {
     const { name = '', id = '' } = req.params
@@ -118,7 +132,10 @@ export function createApp(db: Low<Data>, options: AppOptions = {}) {
   // Body parser
   app.use(json())
 
-  app.get('/', (_req, res) => res.send(eta.render('index.html', { data: db.data })))
+  app.get(
+    '/',
+    (_req, res) => res.send(eta.render('index.html', { data: db.data })),
+  )
 
   app.get('/:name', (req, res, next) => {
     const { name = '' } = req.params
@@ -152,7 +169,11 @@ export function createApp(db: Low<Data>, options: AppOptions = {}) {
 
   app.delete('/:name/:id', async (req, res, next) => {
     const { name = '', id = '' } = req.params
-    res.locals['data'] = await service.destroyById(name, id, req.query['_dependent'])
+    res.locals['data'] = await service.destroyById(
+      name,
+      id,
+      req.query['_dependent'],
+    )
     next?.()
   })
 
