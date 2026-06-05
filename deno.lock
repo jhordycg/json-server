@@ -3,25 +3,14 @@
   "specifiers": {
     "jsr:@bgub/eta@4.6.0": "4.6.0",
     "jsr:@hono/hono@4.12.23": "4.12.23",
-    "jsr:@std/assert@1.0.19": "1.0.19",
-    "jsr:@std/assert@^1.0.19": "1.0.19",
-    "jsr:@std/async@^1.4.0": "1.4.0",
     "jsr:@std/bytes@^1.0.6": "1.0.6",
-    "jsr:@std/cli@^1.0.30": "1.0.30",
-    "jsr:@std/data-structures@^1.1.0": "1.1.0",
-    "jsr:@std/expect@^1.0.19": "1.0.19",
-    "jsr:@std/fmt@^1.0.10": "1.0.10",
-    "jsr:@std/fs@^1.0.24": "1.0.24",
-    "jsr:@std/internal@^1.0.12": "1.0.14",
-    "jsr:@std/internal@^1.0.13": "1.0.14",
+    "jsr:@std/cli@1.0.30": "1.0.30",
+    "jsr:@std/fmt@1.0.10": "1.0.10",
+    "jsr:@std/fs@1.0.24": "1.0.24",
     "jsr:@std/internal@^1.0.14": "1.0.14",
     "jsr:@std/io@0.225.3": "0.225.3",
     "jsr:@std/path@1.1.5": "1.1.5",
-    "jsr:@std/path@^1.0.4": "1.1.5",
-    "jsr:@std/path@^1.1.4": "1.1.5",
     "jsr:@std/path@^1.1.5": "1.1.5",
-    "jsr:@std/testing@^1.0.19": "1.0.19",
-    "jsr:@std/url@0.225.1": "0.225.1",
     "npm:@tinyhttp/app@3.0.1": "3.0.1",
     "npm:@tinyhttp/cors@2.0.1": "2.0.1",
     "npm:@tinyhttp/logger@2.1.0": "2.1.0",
@@ -36,8 +25,6 @@
     "npm:json5@2.2.3": "2.2.3",
     "npm:lowdb@7.0.1": "7.0.1",
     "npm:milliparsec@5.1.0": "5.1.0",
-    "npm:oxfmt@0.24.0": "0.24.0",
-    "npm:oxlint@1.39.0": "1.39.0",
     "npm:sirv@3.0.2": "3.0.2",
     "npm:sort-on@7.0.0": "7.0.0",
     "npm:tempy@3.1.0": "3.1.0",
@@ -51,35 +38,11 @@
     "@hono/hono@4.12.23": {
       "integrity": "9d9f3da498f69c311b5f92d973eb3b8ebc973b5fd2b4972781b556e07818a745"
     },
-    "@std/assert@1.0.19": {
-      "integrity": "eaada96ee120cb980bc47e040f82814d786fe8162ecc53c91d8df60b8755991e",
-      "dependencies": [
-        "jsr:@std/internal@^1.0.12"
-      ]
-    },
-    "@std/async@1.4.0": {
-      "integrity": "4d70b008634f571cff9b554090d628c76141c32613aae0ff283fd5fa23d0c379"
-    },
     "@std/bytes@1.0.6": {
       "integrity": "f6ac6adbd8ccd99314045f5703e23af0a68d7f7e58364b47d2c7f408aeb5820a"
     },
     "@std/cli@1.0.30": {
-      "integrity": "769446536522d0417d7127ebcabcafac1ab0ce6766d0eb3fca1d36326fe98d13",
-      "dependencies": [
-        "jsr:@std/fmt",
-        "jsr:@std/internal@^1.0.14"
-      ]
-    },
-    "@std/data-structures@1.1.0": {
-      "integrity": "c35ae4ad5d8e41a38573c2fe3e19b18ea2505f63cfea201edcb8720aca1f7f58"
-    },
-    "@std/expect@1.0.19": {
-      "integrity": "25271785688c7ff902fa54875d6aa4001f552c5578f7f0fefb5b5aac1fc2ed8a",
-      "dependencies": [
-        "jsr:@std/assert@^1.0.19",
-        "jsr:@std/internal@^1.0.13",
-        "jsr:@std/path@^1.1.4"
-      ]
+      "integrity": "769446536522d0417d7127ebcabcafac1ab0ce6766d0eb3fca1d36326fe98d13"
     },
     "@std/fmt@1.0.10": {
       "integrity": "90dfba288802ac6de82fb31d0917eb9e4450b9925b954d5e51fc29ac07419db5"
@@ -87,7 +50,7 @@
     "@std/fs@1.0.24": {
       "integrity": "f3061b45b81673a2bece689da041df32d174be064c89eb6397fb5718d3fb7877",
       "dependencies": [
-        "jsr:@std/internal@^1.0.14",
+        "jsr:@std/internal",
         "jsr:@std/path@^1.1.5"
       ]
     },
@@ -103,108 +66,11 @@
     "@std/path@1.1.5": {
       "integrity": "ccea00982ea28c36becaf6e62f855406c76a8c32d462f66f415bbb7d83a271bc",
       "dependencies": [
-        "jsr:@std/internal@^1.0.14"
-      ]
-    },
-    "@std/testing@1.0.19": {
-      "integrity": "f4236172365b216728dc3cc8b5e80a9f4c33083d1e4ede7613d5b25b4014898e",
-      "dependencies": [
-        "jsr:@std/assert@^1.0.19",
-        "jsr:@std/async",
-        "jsr:@std/data-structures",
-        "jsr:@std/fs",
-        "jsr:@std/internal@^1.0.14",
-        "jsr:@std/path@^1.1.5"
-      ]
-    },
-    "@std/url@0.225.1": {
-      "integrity": "7961f62f0a3cd2c7aa5b785822874132760b50bbf5ed0ccfded8668f203e7a95",
-      "dependencies": [
-        "jsr:@std/path@^1.0.4"
+        "jsr:@std/internal"
       ]
     }
   },
   "npm": {
-    "@oxfmt/darwin-arm64@0.24.0": {
-      "integrity": "sha512-aYXuGf/yq8nsyEcHindGhiz9I+GEqLkVq8CfPbd+6VE259CpPEH+CaGHEO1j6vIOmNr8KHRq+IAjeRO2uJpb8A==",
-      "os": ["darwin"],
-      "cpu": ["arm64"]
-    },
-    "@oxfmt/darwin-x64@0.24.0": {
-      "integrity": "sha512-vs3b8Bs53hbiNvcNeBilzE/+IhDTWKjSBB3v/ztr664nZk65j0xr+5IHMBNz3CFppmX7o/aBta2PxY+t+4KoPg==",
-      "os": ["darwin"],
-      "cpu": ["x64"]
-    },
-    "@oxfmt/linux-arm64-gnu@0.24.0": {
-      "integrity": "sha512-ItPDOPoQ0wLj/s8osc5ch57uUcA1Wk8r0YdO8vLRpXA3UNg7KPOm1vdbkIZRRiSUphZcuX5ioOEetEK8H7RlTw==",
-      "os": ["linux"],
-      "cpu": ["arm64"]
-    },
-    "@oxfmt/linux-arm64-musl@0.24.0": {
-      "integrity": "sha512-JkQO3WnQjQTJONx8nxdgVBfl6BBFfpp9bKhChYhWeakwJdr7QPOAWJ/v3FGZfr0TbqINwnNR74aVZayDDRyXEA==",
-      "os": ["linux"],
-      "cpu": ["arm64"]
-    },
-    "@oxfmt/linux-x64-gnu@0.24.0": {
-      "integrity": "sha512-N/SXlFO+2kak5gMt0oxApi0WXQDhwA0PShR0UbkY0PwtHjfSiDqJSOumyNqgQVoroKr1GNnoRmUqjZIz6DKIcw==",
-      "os": ["linux"],
-      "cpu": ["x64"]
-    },
-    "@oxfmt/linux-x64-musl@0.24.0": {
-      "integrity": "sha512-WM0pek5YDCQf50XQ7GLCE9sMBCMPW/NPAEPH/Hx6Qyir37lEsP4rUmSECo/QFNTU6KBc9NnsviAyJruWPpCMXw==",
-      "os": ["linux"],
-      "cpu": ["x64"]
-    },
-    "@oxfmt/win32-arm64@0.24.0": {
-      "integrity": "sha512-vFCseli1KWtwdHrVlT/jWfZ8jP8oYpnPPEjI23mPLW8K/6GEJmmvy0PZP5NpWUFNTzX0lqie58XnrATJYAe9Xw==",
-      "os": ["win32"],
-      "cpu": ["arm64"]
-    },
-    "@oxfmt/win32-x64@0.24.0": {
-      "integrity": "sha512-0tmlNzcyewAnauNeBCq0xmAkmiKzl+H09p0IdHy+QKrTQdtixtf+AOjDAADbRfihkS+heF15Pjc4IyJMdAAJjw==",
-      "os": ["win32"],
-      "cpu": ["x64"]
-    },
-    "@oxlint/darwin-arm64@1.39.0": {
-      "integrity": "sha512-lT3hNhIa02xCujI6YGgjmYGg3Ht/X9ag5ipUVETaMpx5Rd4BbTNWUPif1WN1YZHxt3KLCIqaAe7zVhatv83HOQ==",
-      "os": ["darwin"],
-      "cpu": ["arm64"]
-    },
-    "@oxlint/darwin-x64@1.39.0": {
-      "integrity": "sha512-UT+rfTWd+Yr7iJeSLd/7nF8X4gTYssKh+n77hxl6Oilp3NnG1CKRHxZDy3o3lIBnwgzJkdyUAiYWO1bTMXQ1lA==",
-      "os": ["darwin"],
-      "cpu": ["x64"]
-    },
-    "@oxlint/linux-arm64-gnu@1.39.0": {
-      "integrity": "sha512-qocBkvS2V6rH0t9AT3DfQunMnj3xkM7srs5/Ycj2j5ZqMoaWd/FxHNVJDFP++35roKSvsRJoS0mtA8/77jqm6Q==",
-      "os": ["linux"],
-      "cpu": ["arm64"]
-    },
-    "@oxlint/linux-arm64-musl@1.39.0": {
-      "integrity": "sha512-arZzAc1PPcz9epvGBBCMHICeyQloKtHX3eoOe62B3Dskn7gf6Q14wnDHr1r9Vp4vtcBATNq6HlKV14smdlC/qA==",
-      "os": ["linux"],
-      "cpu": ["arm64"]
-    },
-    "@oxlint/linux-x64-gnu@1.39.0": {
-      "integrity": "sha512-ZVt5qsECpuNprdWxAPpDBwoixr1VTcZ4qAEQA2l/wmFyVPDYFD3oBY/SWACNnWBddMrswjTg9O8ALxYWoEpmXw==",
-      "os": ["linux"],
-      "cpu": ["x64"]
-    },
-    "@oxlint/linux-x64-musl@1.39.0": {
-      "integrity": "sha512-pB0hlGyKPbxr9NMIV783lD6cWL3MpaqnZRM9MWni4yBdHPTKyFNYdg5hGD0Bwg+UP4S2rOevq/+OO9x9Bi7E6g==",
-      "os": ["linux"],
-      "cpu": ["x64"]
-    },
-    "@oxlint/win32-arm64@1.39.0": {
-      "integrity": "sha512-Gg2SFaJohI9+tIQVKXlPw3FsPQFi/eCSWiCgwPtPn5uzQxHRTeQEZKuluz1fuzR5U70TXubb2liZi4Dgl8LJQA==",
-      "os": ["win32"],
-      "cpu": ["arm64"]
-    },
-    "@oxlint/win32-x64@1.39.0": {
-      "integrity": "sha512-sbi25lfj74hH+6qQtb7s1wEvd1j8OQbTaH8v3xTcDjrwm579Cyh0HBv1YSZ2+gsnVwfVDiCTL1D0JsNqYXszVA==",
-      "os": ["win32"],
-      "cpu": ["x64"]
-    },
     "@polka/url@1.0.0-next.29": {
       "integrity": "sha512-wwQAWhWSuHaag8c4q/KN/vCoeOJYshAIvMQwD4GpSb3OiZklFfvAgmj0VCBBImRpuF/aFgIRzllXlVX93Jevww=="
     },
@@ -457,37 +323,6 @@
     "negotiator@1.0.0": {
       "integrity": "sha512-8Ofs/AUQh8MaEcrlq5xOX0CQ9ypTF5dl78mjlMNfOK08fzpgTHQRQPBxcPlEtIw0yRpws+Zo/3r+5WRby7u3Gg=="
     },
-    "oxfmt@0.24.0": {
-      "integrity": "sha512-UjeM3Peez8Tl7IJ9s5UwAoZSiDRMww7BEc21gDYxLq3S3/KqJnM3mjNxsoSHgmBvSeX6RBhoVc2MfC/+96RdSw==",
-      "dependencies": [
-        "tinypool"
-      ],
-      "optionalDependencies": [
-        "@oxfmt/darwin-arm64",
-        "@oxfmt/darwin-x64",
-        "@oxfmt/linux-arm64-gnu",
-        "@oxfmt/linux-arm64-musl",
-        "@oxfmt/linux-x64-gnu",
-        "@oxfmt/linux-x64-musl",
-        "@oxfmt/win32-arm64",
-        "@oxfmt/win32-x64"
-      ],
-      "bin": true
-    },
-    "oxlint@1.39.0": {
-      "integrity": "sha512-wSiLr0wjG+KTU6c1LpVoQk7JZ7l8HCKlAkVDVTJKWmCGazsNxexxnOXl7dsar92mQcRnzko5g077ggP3RINSjA==",
-      "optionalDependencies": [
-        "@oxlint/darwin-arm64",
-        "@oxlint/darwin-x64",
-        "@oxlint/linux-arm64-gnu",
-        "@oxlint/linux-arm64-musl",
-        "@oxlint/linux-x64-gnu",
-        "@oxlint/linux-x64-musl",
-        "@oxlint/win32-arm64",
-        "@oxlint/win32-x64"
-      ],
-      "bin": true
-    },
     "readdirp@5.0.0": {
       "integrity": "sha512-9u/XQ1pvrQtYyMpZe7DXKv2p5CNvyVwzUB6uhLAnQwHMSgKMBR62lc7AHljaeteeHXn11XTAaLLUVZYVZyuRBQ=="
     },
@@ -564,9 +399,6 @@
         "unique-string"
       ]
     },
-    "tinypool@2.0.0": {
-      "integrity": "sha512-/RX9RzeH2xU5ADE7n2Ykvmi9ED3FBGPAjw9u3zucrNNaEBIO0HPSYgL0NT7+3p147ojeSdaVu08F6hjpv31HJg=="
-    },
     "totalist@3.0.1": {
       "integrity": "sha512-sf4i37nQ2LBx4m3wB74y+ubopq6W/dIzXg0FDGjsYnZHVa1Da8FH853wlL2gtUhg+xJXjfk3kUZS3BRoQeoQBQ=="
     },
@@ -634,10 +466,10 @@
       "jsr:@bgub/eta@4.6.0",
       "jsr:@hono/hono@4.12.23",
       "jsr:@std/assert@1.0.19",
-      "jsr:@std/cli@^1.0.30",
+      "jsr:@std/cli@1.0.30",
       "jsr:@std/expect@^1.0.19",
-      "jsr:@std/fmt@^1.0.10",
-      "jsr:@std/fs@^1.0.24",
+      "jsr:@std/fmt@1.0.10",
+      "jsr:@std/fs@1.0.24",
       "jsr:@std/io@0.225.3",
       "jsr:@std/path@1.1.5",
       "jsr:@std/testing@^1.0.19",
@@ -656,8 +488,6 @@
       "npm:json5@2.2.3",
       "npm:lowdb@7.0.1",
       "npm:milliparsec@5.1.0",
-      "npm:oxfmt@0.24.0",
-      "npm:oxlint@1.39.0",
       "npm:sirv@3.0.2",
       "npm:sort-on@7.0.0",
       "npm:tempy@3.1.0",

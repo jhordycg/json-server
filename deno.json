@@ -4,7 +4,8 @@
   "license": "MIT",
   "exports": {
     ".": "./src/hono/main.ts",
-    "./start-server": "./src/hono/start-server.ts"
+    "./factory": "./src/hono/factory.ts",
+    "./jserver": "./src/hono/start-server.ts"
   },
   "imports": {
     "@hono/hono": "jsr:@hono/hono@4.12.23",
@@ -53,16 +54,20 @@
         "CHOKIDAR_INTERVAL"
       ],
       "net": [
-        "[::]:3000"
+        "[::]:3000",
+        "0.0.0.0:3000",
+        "127.0.0.1:3000",
+        "localhost:3000"
       ],
       "read": [
-        "fixtures"
+        "fixtures",
+        "views/index.html"
       ]
     }
   },
   "tasks": {
     "build": "deno bundle --minify --inline-imports views/index.html src/hono/home-template.ts --outdir libs",
-    "dev": "deno run -P src/bin.ts fixtures/db.json",
+    "dev": "deno run -P src/start-server.ts fixtures/db.json",
     "fmt": "deno fmt",
     "fmt:check": "deno fmt --check",
     "lint": "deno lint",
