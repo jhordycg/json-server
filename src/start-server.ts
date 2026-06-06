@@ -7,7 +7,7 @@ import { writeTextFileSync as writeFileSync } from '@std/fs/unstable-write-text-
 import * as colors from '@std/fmt/colors'
 
 import type { RouterRoute } from '@hono/hono/types'
-import { createApp } from './hono/factory.ts'
+import { jsonServerFactory } from './hono/factory.ts'
 
 function printHelp() {
   console.log(`Usage: json-server [options] <file>
@@ -54,7 +54,7 @@ if (fileContent.trim() === '') {
 }
 
 // Create app
-const app = await createApp(file)
+const app = (await jsonServerFactory(file)).createApp()
 const kaomojis = ['♡⸜(˶˃ ᵕ ˂˶)⸝♡', '♡( ◡‿◡ )', '( ˶ˆ ᗜ ˆ˵ )', '(˶ᵔ ᵕ ᵔ˶)']
 
 function randomItem(items: string[]): string {
