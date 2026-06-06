@@ -1,8 +1,5 @@
-import { Hono } from '@hono/hono'
-import { createFactory, createMiddleware } from '@hono/hono/factory'
-import type { HonoOptions } from '@hono/hono/hono-base'
+import { createFactory, createMiddleware, Factory } from '@hono/hono/factory'
 import type { Handler, MiddlewareHandler } from '@hono/hono/types'
-import { parse } from '@std/path/parse'
 import type { Low } from 'lowdb'
 import { type Data, isItem, Service } from '../service.ts'
 import { template } from './template.ts'
@@ -17,9 +14,8 @@ type Env = {
   }
 }
 
-function findAllHandler(): Handler {
+function findAllHandler(resource: string): Handler {
   return (ctx) => {
-    const resource = parse(ctx.req.path).name
     const service = ctx.var.service
 
     const options = parseListParams(ctx.req.queries())
@@ -29,9 +25,8 @@ function findAllHandler(): Handler {
   }
 }
 
-function findByIdHandler(): Handler {
+function findByIdHandler(resource: string): Handler {
   return (ctx) => {
-    const resource = parse(ctx.req.path).name
     const service = ctx.var.service
 
     const id = ctx.req.param('id')
@@ -41,9 +36,8 @@ function findByIdHandler(): Handler {
   }
 }
 
-function createHandler(): Handler {
+function createHandler(resource: string): Handler {
   return async (ctx) => {
-    const resource = parse(ctx.req.path).name
     const service = ctx.var.service
 
     const action = service.create.bind(service)
@@ -56,9 +50,8 @@ function createHandler(): Handler {
   }
 }
 
-function replaceHandler(): Handler {
+function replaceHandler(resource: string): Handler {
   return async (ctx) => {
-    const resource = parse(ctx.req.path).name
     const service = ctx.var.service
 
     const action = service.update.bind(service)
@@ -71,9 +64,8 @@ function replaceHandler(): Handler {
   }
 }
 
-function replaceOneHandler(): Handler {
+function replaceOneHandler(resource: string): Handler {
   return async (ctx) => {
-    const resource = parse(ctx.req.path).name
     const service = ctx.var.service
 
     const action = service.updateById.bind(service)
@@ -88,9 +80,8 @@ function replaceOneHandler(): Handler {
   }
 }
 
-function updateHandler(): Handler {
+function updateHandler(resource: string): Handler {
   return async (ctx) => {
-    const resource = parse(ctx.req.path).name
     const service = ctx.var.service
 
     const action = service.patch.bind(service)
@@ -103,9 +94,8 @@ function updateHandler(): Handler {
   }
 }
 
-function updateOneHandler(): Handler {
+function updateOneHandler(resource: string): Handler {
   return async (ctx) => {
-    const resource = parse(ctx.req.path).name
     const service = ctx.var.service
 
     const action = service.patchById.bind(service)
@@ -120,9 +110,8 @@ function updateOneHandler(): Handler {
   }
 }
 
-function deleteOneHandler(): Handler {
+function deleteOneHandler(resource: string): Handler {
   return async (ctx) => {
-    const resource = parse(ctx.req.path).name
     const service = ctx.var.service
     const id = ctx.req.param('id') ?? ''
     const dependent = ctx.req.query('_dependent')
@@ -132,25 +121,6 @@ function deleteOneHandler(): Handler {
     return ctx.json(data)
   }
 }
-
-const crudFactory = createFactory<Env>({
-  initApp(app) {
-    app.get('/', findAllHandler())
-    app.get('/:id', findByIdHandler())
-
-    app.post('/', createHandler())
-
-    app.put('/', replaceHandler())
-    app.put('/:id', replaceOneHandler())
-
-    app.patch('/', updateHandler())
-    app.patch('/:id', updateOneHandler())
-
-    app.delete('/:id', deleteOneHandler())
-
-    return app
-  },
-})
 
 export function crudLowDB(db: Low<Data>): MiddlewareHandler<Env> {
   return createMiddleware<Env>((ctx, next) => {
@@ -163,18 +133,30 @@ export function loadHomePage(db: Low<Data>): string {
   return eta.renderString(template, db)
 }
 
-export async function createApp(dbFile: string, options?: HonoOptions<Env>): Promise<Hono<Env>> {
+export async function jsonServerFactory(
+  dbFile: string,
+): Promise<Factory<Env, string>> {
   const db = await setupDb(dbFile)
-  const app = new Hono(options)
 
-  app.use(crudLowDB(db))
-  app.get('/', (ctx) => ctx.html(loadHomePage(db)))
+  return createFactory({
+    initApp(app) {
+      app.use(crudLowDB(db))
+      app.get('/', (ctx) => ctx.html(loadHomePage(db)))
 
-  const api = app.basePath('api')
+      for (const resource of Object.keys(db.data)) {
+        app.basePath(`api/${resource}`)
+          .post(createHandler(resource))
+          .put(replaceHandler(resource))
+          .patch(updateHandler(resource))
+          .get(findAllHandler(resource))
+          .basePath('/:id')
+          .get(findByIdHandler(resource))
+          .patch(updateOneHandler(resource))
+          .put(replaceOneHandler(resource))
+          .delete(deleteOneHandler(resource))
+      }
 
-  for (const key of Object.keys(db.data)) {
-    api.route(key, crudFactory.createApp())
-  }
-
-  return app
+      return app
+    },
+  })
 }
