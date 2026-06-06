@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url'
 import { App } from '@tinyhttp/app'
 import { cors } from '@tinyhttp/cors'
 import { Eta } from 'eta'
-import { Low } from 'lowdb'
+import type { Low } from 'lowdb'
 import { json } from 'milliparsec'
 import sirv from 'sirv'
 

@@ -1,5 +1,5 @@
 import inflection from 'inflection'
-import { Low } from 'lowdb'
+import type { Low } from 'lowdb'
 import sortOn from 'sort-on'
 import type { JsonObject } from 'type-fest'
 

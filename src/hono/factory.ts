@@ -1,4 +1,4 @@
-import { createFactory, createMiddleware, Factory } from '@hono/hono/factory'
+import { createFactory, createMiddleware, type Factory } from '@hono/hono/factory'
 import type { Handler, MiddlewareHandler } from '@hono/hono/types'
 import type { Low } from 'lowdb'
 import { type Data, isItem, Service } from '../service.ts'
